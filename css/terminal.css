@@ -51,6 +51,14 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Global Pre Element Safety */
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
 /* CRT Effect - Minimal */
 .crt {
     width: 100%;
@@ -87,6 +95,7 @@ body {
     position: relative;
     z-index: 1;
     transition: background-color 0.3s ease, border-color 0.3s ease;
+    overflow-x: hidden;
 }
 
 /* Terminal Header */
@@ -184,6 +193,10 @@ body {
     font-size: 10px;
     line-height: 1.2;
     margin-bottom: 30px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 /* Command Blocks */
@@ -314,9 +327,11 @@ body {
 }
 
 .separator {
-    color: var(--dim-color);
     margin: 20px 0;
     opacity: 0.5;
+    border-bottom: 3px double var(--dim-color);
+    height: 0;
+    max-width: 100%;
 }
 
 .status {
@@ -361,6 +376,7 @@ body {
 
     .terminal-title {
         font-size: 10px;
+        margin-right: 30px;
     }
 
     .command-block,
