@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initTerminal() {
     updateClock();
     initSmoothScroll();
+    initThemeToggle();
 }
 
 // Update the clock in footer
@@ -49,6 +50,45 @@ function initSmoothScroll() {
             }
         });
     });
+}
+
+// Theme Toggle Functionality
+function initThemeToggle() {
+    const toggleButton = document.getElementById('theme-toggle');
+
+    if (!toggleButton) return;
+
+    // Load saved theme or default to dark
+    loadTheme();
+
+    // Add click event listener
+    toggleButton.addEventListener('click', toggleTheme);
+}
+
+function toggleTheme() {
+    const body = document.body;
+    const currentTheme = body.classList.contains('light-theme') ? 'light' : 'dark';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    setTheme(newTheme);
+}
+
+function setTheme(theme) {
+    const body = document.body;
+
+    if (theme === 'light') {
+        body.classList.add('light-theme');
+    } else {
+        body.classList.remove('light-theme');
+    }
+
+    // Save theme preference
+    localStorage.setItem('theme', theme);
+}
+
+function loadTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
 }
 
 // Console welcome message

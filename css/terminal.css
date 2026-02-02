@@ -10,6 +10,32 @@
     --shadow-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Light Theme */
+body.light-theme {
+    --primary-color: #1e1e1e;
+    --bg-color: #f5f5f5;
+    --accent-color: #2d2d2d;
+    --dim-color: #666666;
+    --orange-color: #d86600;
+    --success-color: #00aa00;
+    --terminal-border: #cccccc;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .scanline {
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.02),
+        rgba(0, 0, 0, 0.02) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+}
+
+body.light-theme .terminal-header {
+    background: #e0e0e0;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -22,6 +48,7 @@ body {
     color: var(--primary-color);
     overflow-x: hidden;
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* CRT Effect - Minimal */
@@ -59,6 +86,7 @@ body {
     border-radius: 8px;
     position: relative;
     z-index: 1;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Terminal Header */
@@ -102,6 +130,34 @@ body {
     flex-grow: 1;
     text-align: center;
     margin-right: 60px;
+    transition: color 0.3s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    user-select: none;
+}
+
+.theme-toggle:hover {
+    opacity: 0.7;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-icon {
+    color: var(--dim-color);
+    font-size: 18px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle:hover .theme-icon {
+    transform: rotate(180deg);
 }
 
 /* Terminal Body */
@@ -149,6 +205,7 @@ body {
 .output {
     margin: 10px 0 10px 20px;
     color: var(--primary-color);
+    transition: color 0.3s ease;
 }
 
 .output h2 {
@@ -156,6 +213,7 @@ body {
     font-size: 1.4em;
     margin: 15px 0 10px 0;
     font-weight: normal;
+    transition: color 0.3s ease;
 }
 
 .output p {
